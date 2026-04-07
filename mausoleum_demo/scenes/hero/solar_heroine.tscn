@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://hero_solar"]
+
+[ext_resource type="Script" path="res://scripts/hero/hero_controller.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/components/health_component.tscn" id="2_health"]
+[ext_resource type="PackedScene" path="res://scenes/components/hurtbox_component.tscn" id="3_hurt"]
+[ext_resource type="PackedScene" path="res://scenes/components/hitbox_component.tscn" id="4_hit"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hero"]
+radius = 12.0
+height = 32.0
+
+[node name="SolarHeroine" type="CharacterBody2D"]
+script = ExtResource("1_script")
+display_name = "Solar Heroine"
+weapon_label = "Solar Crescent"
+move_speed = 235.0
+attack_damage_base = 15.0
+attack_cooldown = 0.42
+body_color = Color(1.00, 0.55, 0.15, 1.0)
+body_scale = 1.0
+collision_layer = 1
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_hero")
+
+[node name="OutlineSprite2D" type="Sprite2D" parent="."]
+
+[node name="BodySprite2D" type="Sprite2D" parent="."]
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_health")]
+max_health = 105
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_hurt")]
+team_id = 0
+
+[node name="MeleeHitbox" parent="." instance=ExtResource("4_hit")]
+team_id = 0
+damage = 15

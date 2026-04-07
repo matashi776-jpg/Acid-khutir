@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://wallscene"]
+
+[ext_resource type="Script" path="res://scripts/world/wall.gd" id="1_ws"]
+[ext_resource type="PackedScene" path="res://scenes/components/health_component.tscn" id="2_hc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(58, 220)
+
+[sub_resource type="Gradient" id="Gradient_wall"]
+offsets = PackedFloat32Array(0, 1)
+colors = PackedColorArray(0.0392157, 0.0392157, 0.0784314, 1, 0.27451, 0.913725, 0.878431, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wall"]
+gradient = SubResource("Gradient_wall")
+
+[node name="Wall" type="StaticBody2D"]
+script = ExtResource("1_ws")
+collision_layer = 1
+collision_mask = 0
+position = Vector2(980, 360)
+
+[node name="OutlineSprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture1D_wall")
+scale = Vector2(5.0, 220.0)
+modulate = Color(0, 0, 0, 1)
+
+[node name="BodySprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture1D_wall")
+scale = Vector2(4.6, 210.0)
+modulate = Color(0.164706, 0.984314, 0.662745, 0.85)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_hc")]
+max_health = 350
