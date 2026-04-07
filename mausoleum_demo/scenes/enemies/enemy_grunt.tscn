@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://enemy_grunt"]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy_base.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/components/health_component.tscn" id="2_health"]
+[ext_resource type="PackedScene" path="res://scenes/components/hurtbox_component.tscn" id="3_hurt"]
+[ext_resource type="PackedScene" path="res://scenes/components/hitbox_component.tscn" id="4_hit"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_enemy"]
+radius = 11.0
+height = 28.0
+
+[node name="EnemyGrunt" type="CharacterBody2D"]
+script = ExtResource("1_script")
+enemy_name = "Queue Grunt"
+base_move_speed = 120.0
+base_max_health = 30
+base_attack_damage = 6.0
+attack_cooldown = 1.0
+body_color = Color(0.92, 0.18, 0.25, 1.0)
+body_scale = 1.0
+collision_layer = 1
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_enemy")
+
+[node name="OutlineSprite2D" type="Sprite2D" parent="."]
+
+[node name="BodySprite2D" type="Sprite2D" parent="."]
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_health")]
+max_health = 30
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_hurt")]
+team_id = 1
+
+[node name="AttackHitbox" parent="." instance=ExtResource("4_hit")]
+team_id = 1
+damage = 6

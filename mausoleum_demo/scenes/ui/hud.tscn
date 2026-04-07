@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://hudscene"]
+
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_hud"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+layer = 1
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HeroHP" type="Label" parent="Root"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 260.0
+offset_bottom = 40.0
+text = "Hero HP"
+
+[node name="WallHP" type="Label" parent="Root"]
+offset_left = 16.0
+offset_top = 44.0
+offset_right = 260.0
+offset_bottom = 68.0
+text = "Wall HP"
+
+[node name="Wave" type="Label" parent="Root"]
+offset_left = 540.0
+offset_top = 16.0
+offset_right = 740.0
+offset_bottom = 40.0
+horizontal_alignment = 1
+text = "Wave: 0"
+
+[node name="Status" type="Label" parent="Root"]
+offset_left = 980.0
+offset_top = 16.0
+offset_right = 1260.0
+offset_bottom = 40.0
+horizontal_alignment = 2
+text = "Choose mode"

@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://mainscene"]
+
+[ext_resource type="Script" path="res://scripts/main/main.gd" id="1_main"]
+[ext_resource type="PackedScene" path="res://scenes/world/wall.tscn" id="2_wall"]
+[ext_resource type="Script" path="res://scripts/modes/wave_director.gd" id="3_wave"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hero_mode_select.tscn" id="4_ui"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="5_hud"]
+[ext_resource type="Texture2D" path="res://assets/reference/bg_forest.png" id="6_bg"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("6_bg")
+modulate = Color(1, 1, 1, 0.42)
+scale = Vector2(0.42, 0.42)
+
+[node name="Wall" parent="." instance=ExtResource("2_wall")]
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="HeroSpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(320, 360)
+
+[node name="EnemySpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(90, 360)
+
+[node name="Actors" type="Node2D" parent="."]
+
+[node name="WaveDirector" type="Node" parent="."]
+script = ExtResource("3_wave")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HeroModeSelect" parent="UI" instance=ExtResource("4_ui")]
+
+[node name="HUD" parent="UI" instance=ExtResource("5_hud")]
