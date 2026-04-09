@@ -1,0 +1,44 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: #e7ecff;
+  background: #0b0c13;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 20% 10%, #1a1f3f, #0b0c13 55%);
+}
+
+#app {
+  width: min(960px, 100vw);
+  padding: 12px;
+}
+
+.hud {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+canvas {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: 1px solid #4e588f;
+  border-radius: 8px;
+  background: #111;
+  display: block;
+}
+
+.help {
+  margin-top: 8px;
+  font-size: 13px;
+  opacity: 0.9;
+}
